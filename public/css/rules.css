@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css?family=Yatra One");
+
+body {
+  font-family: "Yatra One";
+  animation: color-me-in 10s infinite;
+}
+
+@keyframes color-me-in {
+    0% {
+      background: rgb(13, 151, 185);
+    }
+    100% {
+      background: rgb(5, 101, 131);
+    }
+  }
+.main{
+  margin-top: -2rem;
+}
+
+  .event-page {
+    font-size: 6vh;
+    color: black;
+    text-align: center;
+    text-shadow: 2px 2px gray;
+  }
+ol{
+    font-size: 3vh;
+    margin-left: 2vw; 
+    color: rgb(28, 6, 34);
+}
+
+ul{
+    font-size: 3vh;
+}
+
+
+

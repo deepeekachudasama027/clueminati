@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clueminati | Rules</title>
+     <link rel="icon" href="../image/template/logo.png" type="image/png">
+      <link rel="stylesheet" href="../css/rules.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+</head>
+<body>
+    <nav class="navbar">
+    <div class="logo">
+      <a href="/getdata" class="navbar-brand animated flip"><img src="../image/template/logo.png" alt=""></a>
+    </div>
+     
+    <a href="#" class="toggle-button">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </a>
+    <div class="navbar-links">
+      <ul>
+        <li><a href="/leaderboard" target="_blank">Leaderboard</a></li>
+        <li><a href="/contact"  target="_blank">Contact </a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="main">
+    <h1 class="event-page"> Rules </h1>
+    <ol>
+        <li>Any attempt of attack onsite is intolerable. The player will be blacklisted and will not be able to participate in any other events.</li>
+        <li>The image will tell you a lot about the answer; try to use the internet. If you still don't get the answer, use clues.</li>
+        <li>You have 1000 coins in the beginning; use them wisely.</li>
+        <li>There will be three clues for each level. To unlock each Clue, you need to use coins:
+            <ul>
+                <li>For 1 <sup>st</sup> Clue - 20 coins</li>
+                <li>For 2 <sup>nd</sup> Clue - 30 coins</li>
+                <li>For 3 <sup>rd</sup> Clue - 50 coins</li>
+            </ul>
+        </li>
+        <li>To win this event, you have to be very fast; whoever submits the answer first will get 200 coins, other players will get according to the time they have taken in submitting their answers:
+              <ol style="list-style-type:lower-alpha" class="alpha">
+                <li>200 coins if submitted within 30 mins of the first submission</li>
+                <li>170 coins if submitted within 1 hour of the first submission</li>
+                <li>150 coins if submitted after 1 hour of the first submission</li>
+            </ol>
+        </li>
+        <li>Use only Lowercase Alphabets and Numeric values, for eg. type A.P.J Abdul Kalam as apjabdulkalam </li>
+    </ol>
+    </div>
+
+    <script>
+      const toggleButton = document.getElementsByClassName('toggle-button')[0]
+      const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+
+      toggleButton.addEventListener('click', () => {
+        navbarLinks.classList.toggle('active')
+      })
+    </script>
+</body>
+</html>

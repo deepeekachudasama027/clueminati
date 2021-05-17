@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clueminati | Error page</title>
+     <link rel="icon" href="../image/template/logo.png" type="image/png">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <style>
+        *{
+             font-family: "Yatra One";
+        }
+        body {
+            animation: color-me-in 10s infinite;
+        }
+
+        @keyframes color-me-in {
+            0% {
+                background: rgb(13, 151, 185);
+            }
+
+            100% {
+                background: rgb(5, 101, 131);
+            }
+        }
+
+        .image {
+            width: 60vw;
+            height: 70vh;
+            position: relative;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div>
+            <a href="/getdata" class="navbar-brand animated flip"><img src="../image/template/logo.png" alt=""></a>
+
+        </div>
+
+        <div>
+            <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+        </div>
+
+
+        <div class="navbar-links">
+            <ul>
+
+                <li><a href="/rules" target="_blank">Rules</a></li>
+                <li><a href="/leaderboard" target="_blank">Leaderboard</a></li>
+                <li><a href="/contact" target="_blank">Contact </a></li>
+            </ul>
+        </div>
+    </nav>
+    <div><img src="../image/template/404_page.png" alt="" class="image"></div>    
+    <script>
+      const toggleButton = document.getElementsByClassName('toggle-button')[0]
+      const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+
+      toggleButton.addEventListener('click', () => {
+        navbarLinks.classList.toggle('active')
+      })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,256 @@
+@import url("https://fonts.googleapis.com/css?family=Yatra One");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Yatra One";
+}
+
+body {
+  animation: color-me-in 10s infinite;
+}
+
+@keyframes color-me-in {
+  0% {
+    background: rgb(13, 151, 185);
+  }
+  100% {
+    background: rgb(5, 101, 131);
+  }
+}
+
+.navbar {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.logo {
+  animation-duration: 3s !important;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  backface-visibility: visible;
+  animation-name: flip;
+  font-size: 30px;
+  font-weight: bolder;
+  width: 150px;
+  text-align: center;
+}
+
+@keyframes flip {
+  50% {
+    transform: perspective(400px) translateZ(0) rotateY(360deg) scale(0.8);
+    animation-timing-function: ease-in;
+  }
+  80% {
+    transform: perspective(400px) translateZ(0) rotateY(360deg) scale(0.95);
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: perspective(400px) translateZ(0) rotateY(360deg) scale(1);
+    animation-timing-function: ease-in;
+  }
+}
+
+.navbar-links {
+  height: 100%;
+}
+
+.navbar-links ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  list-style: none;
+  margin-right: 2rem;
+}
+
+.navbar-links li a {
+  display: block;
+  text-decoration: none;
+  color: peachpuff;
+  padding: 1rem;
+  font-size: 20px;
+}
+
+.navbar-links :hover {
+  color: #f77062;
+  transition: all 0.3s ease;
+}
+
+.toggle-button {
+  position: absolute;
+  top: 0.25rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  margin-top: 1.1rem;
+}
+
+.toggle-button .bar {
+  height: 3px;
+  width: 100%;
+  background-color: antiquewhite !important;
+  border-radius: 10px;
+}
+
+@media (max-width: 1080px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .toggle-button {
+    display: flex;
+  }
+
+  .navbar-links {
+    display: none;
+    width: 100%;
+  }
+
+  .navbar-links ul {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .navbar-links ul li {
+    text-align: center;
+  }
+
+  .navbar-links ul li a {
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+}
+
+.head {
+  position: relative;
+  margin-top: 2vh;
+}
+
+.main_btn {
+  border: thin;
+  color: yellow;
+  padding: 1rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1em;
+  cursor: pointer;
+  background-color: rgb(7, 5, 5);
+  margin-left: 1vw;
+  border-radius: 0.5em;
+  margin-top: -3rem;
+}
+
+.challenge {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5vh;
+  font-weight: bolder;
+  color: rgb(31, 5, 78);
+}
+
+.iconify {
+  color: yellow;
+  width: 40px;
+  height: 40px;
+  float: right;
+  margin-top: -0.5rem;
+  margin-right: 1vw;
+}
+
+.score {
+  color: rgb(17, 2, 44);
+  font-weight: bold;
+  font-size: x-large;
+  float: right;
+  margin-top: 0.2rem;
+  margin-right: 3vw;
+}
+
+.main_content {
+  margin-top: 2vh;
+}
+
+.image {
+  border-radius: 10px 10px 10px 10px;
+  border: 7px solid rgb(31, 5, 78);
+  width: 40vw;
+  height: 50vh;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+}
+.answer {
+  width: 40vw;
+  padding: 10px 15px;
+  background-color: white;
+  border-radius: 16px 0px 16px 0px;
+  border-top: black;
+  border-bottom: 2px solid black;
+  font-size: 20px;
+  font-weight: 300;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  margin-top: 1%;
+}
+
+.btn1 {
+  text-align: center;
+  text-decoration: none;
+  font-size: 2vh;
+  padding: 10px;
+  border-radius: 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: rgb(143, 223, 143);
+  border: 2px solid rgb(7, 122, 7);
+  border-radius: 8px 8px 8px 8px;
+  width: 20vh;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  margin-top: 0.5%;
+}
+.btn1:hover {
+  background-color: rgb(7, 122, 7);
+  color: white;
+}
+
+@media (max-width: 480px) {
+  .challenge {
+    font-size: 2.7vh;
+  }
+  .image {
+    width: 70vw;
+  }
+  .answer {
+    width: 70vw;
+  }
+  .btn1 {
+    width: 22vw;
+    text-align: center;
+  }
+  .score {
+    font-size: medium;
+  }
+}

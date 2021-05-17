@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Clueminati | Login</title>
+   <link rel="icon" href="../image/template/logo.png" type="image/png">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="shortcut icon" href="/catalog/favicon.ico?v=10">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+        integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel='stylesheet'
+        href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/login.css">
+
+
+</head>
+
+<body>
+  
+        <nav class="navbar">
+            <div>
+                <a href="/" class="navbar-brand animated flip"><img src="../image/template/logo.png" alt=""></a>
+
+            </div>
+
+            <div>
+                <a href="#" class="toggle-button">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </a>
+            </div>
+
+
+            <div class="navbar-links">
+                <ul>
+
+                    <li><a href="/rules" target="_blank">Rules</a></li>
+                    <li><a href="/leaderboard" target="_blank">Leaderboard</a></li>
+                    <li><a href="/contact" target="_blank">Contact </a></li>
+                    <li><a href="http://www.acmnitt.in/pre-register" target="_blank">Sign up</a></li>
+                </ul>
+            </div>
+        </nav>
+    <div>
+       
+<form  action="auth" class="box" method="POST">
+	 <h1 class="event-page">Clueminati</h1>
+		<input type="text" name="rollno" placeholder="Roll Number"  pattern="\d*" autocomplete="off" minlength="9"
+        maxlength="9" required>
+		<input type="Password" name="password" placeholder="Password"required>
+		<input type="Submit" value="Login">
+        <p>{{message}}</p>
+	</form>
+    </div>
+
+<div id="footer">
+<img src="../image/template/nittlogo.png" alt="" id="NITT">
+<img src="../image/template/acmlogo.png" alt="" id="acm">
+</div>
+
+    <script>
+        const toggleButton = document.getElementsByClassName('toggle-button')[0]
+        const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+
+        toggleButton.addEventListener('click', () => {
+            navbarLinks.classList.toggle('active')
+        })
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clueminati | Home Page</title>
+   <link rel="icon" href="../image/template/logo.png" type="image/png">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      <a href="#" class="navbar-brand animated flip"><img src="../image/template/logo.png" alt=""></a>
+    </div>
+    <a href="#" class="toggle-button">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </a>
+    <div class="navbar-links">
+      <ul>
+        <li><a href="/rules" target="_blank">Rules</a></li>
+        <li><a href="/leaderboard" target="_blank">Leaderboard</a></li>
+        <li><a href="/contact"  target="_blank">Contact </a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+ 
+    <div class="wrapper">
+      <div class="head">
+        <button class="main_btn"><i class="fa fa-lightbulb-o fa_custom fa-2x"></i></button>
+        <span class="challenge">
+          Challenge : {{id}}
+        </span>
+        <span class="score">{{score}}</span>
+        <span class="iconify" data-icon="fa-solid:coins"></span>
+      </div>
+    </div>
+
+    <div class="main_content">
+      <form action="/submit" method="POST">
+        <div>
+          <img src="../image/question_images/{{question}}" alt="" class="image">
+          <input type="text" id="answer" class="answer" size="26" placeholder="Your Guess" name="guess"
+            autocomplete="off"  onkeyup="this.value = this.value.toLowerCase();" required>
+          <button type="submit" class="btn1">Submit </button>
+        </div>
+
+      </form>
+    </div>
+
+
+    <script>
+
+
+      $(".main_btn").click(function () {
+        $.getJSON('hint').then(res => {
+          var hint = res.hint1 + "\n" + res.hint2 + "\n" + res.hint3;
+          swal.fire({
+            icon: "warning",
+            title: "Clues",
+            html: '<pre>' + hint + '</pre>',
+            footer: res.message,
+          });
+        });
+      });
+
+      const toggleButton = document.getElementsByClassName('toggle-button')[0]
+      const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+
+      toggleButton.addEventListener('click', () => {
+        navbarLinks.classList.toggle('active')
+      }) 
+    </script>
+</body>
+
+</html>

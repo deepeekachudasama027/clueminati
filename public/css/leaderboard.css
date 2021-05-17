@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css?family=Yatra One");
+
+* {
+  box-sizing: border-box;
+  background: rgb(9, 95, 121);
+  font-family: "Yatra One";
+}
+
+.navbar {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: transparent !important;
+}
+
+.logo {
+  animation-duration: 3s !important;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  backface-visibility: visible;
+  animation-name: flip;
+  text-align: center;
+}
+
+.main{
+  margin-top: -6rem;
+}
+
+  .event-page {
+    font-size: 6vh;
+    color: black;
+    text-align: center;
+    text-shadow: 2px 2px gray;
+  }
+
+@keyframes flip {
+  50% {
+    transform: perspective(400px) translateZ(0) rotateY(360deg) scale(0.8);
+    animation-timing-function: ease-in;
+  }
+  80% {
+    transform: perspective(400px) translateZ(0) rotateY(360deg) scale(0.95);
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: perspective(400px) translateZ(0) rotateY(360deg) scale(1);
+    animation-timing-function: ease-in;
+  }
+}
+
+.navbar-links {
+  height: 100%;
+}
+
+.navbar-links ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  list-style: none;
+  margin-right: 2rem;
+}
+
+.navbar-links li a {
+  display: block;
+  text-decoration: none;
+  color: peachpuff;
+  padding: 1rem;
+  font-size: 20px;
+}
+
+.navbar-links :hover {
+  color: #f77062;
+  transition: all 0.3s ease;
+}
+
+.toggle-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  margin-top: 1.1rem;
+}
+
+.toggle-button .bar {
+  height: 3px;
+  width: 100%;
+  background-color: antiquewhite !important;
+  border-radius: 10px;
+}
+
+@media (max-width: 1080px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .toggle-button {
+    display: flex;
+  }
+
+  .navbar-links {
+    display: none;
+    width: 100%;
+  }
+
+  .navbar-links ul {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .navbar-links ul li {
+    text-align: center;
+  }
+
+  .navbar-links ul li a {
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+}
+
+#players {
+  font-family: Arial, Helvetica, sans-serif;
+  border: 1px solid black;
+  width: 60%;
+  text-align: center;
+}
+
+#players td,
+#players th {
+  border: 1px solid #ddd;
+  padding: 3px;
+  background-color: aliceblue !important;
+  font-size: large;
+}
+
+#players tr:nth-child(even) {
+  background-color: #f2f2f2 !important;
+}
+
+#players th {
+  text-align: center;
+  background-color: rgb(13, 71, 71) !important;
+  color: white;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 480px) {
+  #players {
+    margin-top: 1.5rem;
+  }
+  .main{
+    margin-top: 0rem;
+  }
+  .event-page{
+    display: none;
+  }
+}
+
+/* Media Query for Tablets Ipads portrait mode */
+@media (min-width: 768px) and (max-width: 1024px) {
+  #players {
+    margin-top: 1.5rem;
+  }
+
+}
+
+
+
+/* Media Query for Laptops and Desktops */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  #players {
+    margin-top: 1.5rem;
+  }
+}
+
+/* Media Query for Large screens */
+@media (min-width: 1281px) {
+  #players {
+    margin-top: 1.5rem;
+  }
+}

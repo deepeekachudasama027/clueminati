@@ -1,6 +1,6 @@
 
 
-const {selectrollno,selecttotalhit,mainpage,checkanswer,correctanswer,updatefirstanswer,updatewronghit, updatecurhint, selecthint, deducthint1,deducthint2,deducthint3,leaderboard}=require("../models/login")
+const {selectrollno,selecttotalhit,mainpage,checkanswer,correctanswer,updatefirstanswer,updatewronghit, updatecurhint, selecthint, deducthint1,deducthint2,deducthint3,leaderboard, selectflag, updateflag}=require("../models/login")
 
 
 
@@ -50,6 +50,7 @@ exports.getdata = async (request, response, next) => {
                             score: getmain.rows[0].score,
                             question:getmain.rows[0].question,
                             id: getmain.rows[0].id,
+                            rollno:getmain.rows[0].rollno
                           });
             }
         }
@@ -66,8 +67,10 @@ exports.submit = async (request, response, next) => {
         if (request.session.loggedIn) {
             const check = await checkanswer(request.session.rollno);
             if(request.body.guess === check.rows[0].answer){
-                if (selectl.rows[0].flag<15 && selectl.rows[0].flag >1) {
+                const selectl = await selectflag(request.session.rollno);
+                if (selectl.rows[0].flag<15 && selectl.rows[0].flag >=1) {
                     score=200-(selectl.rows[0].flag)*10;
+                    const updatel = await updateflag(request.session.rollno)
                     const updatescore=await correctanswer(score,request.session.rollno);
                     const selecttotal_hit=await selecttotalhit(request.session.rollno);
                     if(selecttotal_hit.rows[0].total_hit === 5)
@@ -81,10 +84,12 @@ exports.submit = async (request, response, next) => {
                             score: getmain.rows[0].score,
                             question:getmain.rows[0].question,
                             id: getmain.rows[0].id,
+                            rollno:getmain.rows[0].rollno
                           });
                     }
             }
-            else if (selectl.rows[0].flag == 1 ){
+            else if (selectl.rows[0].flag == 0 ){
+                const updatel = await updateflag(request.session.rollno)
                 const updatefirst_login = await updatefirstanswer(200,request.session.rollno);
                 const selecttotal_hit=await selecttotalhit(request.session.rollno);
                     if(selecttotal_hit.rows[0].total_hit === 5)
@@ -98,12 +103,14 @@ exports.submit = async (request, response, next) => {
                             score: getmain.rows[0].score,
                             question:getmain.rows[0].question,
                             id: getmain.rows[0].id,
+                            rollno:getmain.rows[0].rollno
                           });
                     }
             }
             else if(selectl.rows[0].flag >= 15)
             {
-                const updatefirst_login = await updatefirstanswer(50,roll);
+                const updatel = await updateflag(request.session.rollno)
+                const updatefirst_login = await updatefirstanswer(50,request.session.rollno);
                 const selecttotal_hit=await selecttotalhit(request.session.rollno);
                     if(selecttotal_hit.rows[0].total_hit === 5)
                     {
@@ -116,6 +123,7 @@ exports.submit = async (request, response, next) => {
                             score: getmain.rows[0].score,
                             question:getmain.rows[0].question,
                             id: getmain.rows[0].id,
+                            rollno:getmain.rows[0].rollno
                           });
                     }
             }
@@ -127,6 +135,7 @@ exports.submit = async (request, response, next) => {
                 score: getmain.rows[0].score,
                 question:getmain.rows[0].question,
                 id: getmain.rows[0].id,
+                rollno:getmain.rows[0].rollno
               });
             }
         }
@@ -149,7 +158,7 @@ exports.hint = async (request, response, next) => {
                     hint1: gethint.rows[0].hint1,
                     hint2: " ",
                     hint3: " ",
-                    message: "you have used your 20 Coins :(",
+                    message: "you have used your 20 Coins ",
                   };
                   response.send(hint)
             }
@@ -160,7 +169,7 @@ exports.hint = async (request, response, next) => {
                     hint1: gethint.rows[0].hint1,
                     hint2:  gethint.rows[0].hint2,
                     hint3: " ",
-                    message: "you have used your 30 Coins :(",
+                    message: "you have used your 30 Coins ",
                   };
                   response.send(hint)
             }
@@ -171,7 +180,7 @@ exports.hint = async (request, response, next) => {
                     hint1: gethint.rows[0].hint1,
                     hint2: gethint.rows[0].hint2,
                     hint3: gethint.rows[0].hint3,
-                    message: "you have used your 50 Coins :(",
+                    message: "you have used your 50 Coins ",
                   };
                   response.send(hint)
             }

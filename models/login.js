@@ -38,31 +38,6 @@ pool.query(
 );
 
 
-
-exports.selectf = (rollno, callback) => {
-  return pool.query(
-    "select rollno,f from  session_clueminati WHERE rollno = $1" ,
-    [rollno],
-    callback
-  );
-};
-
-exports.updatef0 = (rollno, callback) => {
-  return pool.query(
-    "update session_clueminati set f=0 WHERE rollno = $1" ,
-    [rollno],
-    callback
-  );
-};
-
-exports.updatef1 = (rollno, callback) => {
-  return pool.query(
-    "update session_clueminati set f=1 WHERE rollno = $1" ,
-    [rollno],
-    callback
-  );
-};
-
 exports.selectrollno = (rollno,password, callback) => {
   return pool.query(
     "select rollno from  login_clueminati WHERE rollno = $1 AND password =$2" ,
@@ -83,21 +58,23 @@ exports.selecttotalhit = (rollno, callback) => {
 
 exports.mainpage = (rollno, callback) => {
   return pool.query(
-    "select question_clueminati.question,question_clueminati.id,login_clueminati.score FROM question_clueminati INNER JOIN login_clueminati  ON question_clueminati.id=login_clueminati.cur_id where login_clueminati.rollno=$1",
+    "select question_clueminati.question,question_clueminati.id,login_clueminati.score,rollno FROM question_clueminati INNER JOIN login_clueminati  ON question_clueminati.id=login_clueminati.cur_id where login_clueminati.rollno=$1",
     [rollno],
     callback
   );
 };
 
-exports.selectflag = (rollno, callback) => {
+exports.selectflag = (rollno,callback) => {
   return pool.query(
-    "select question_clueminati.flag,id,score,rollno FROM question_clueminati INNER JOIN login_clueminati ON question_clueminati.id=login_clueminati.cur_id where rollno = $1 ", [rollno],
+    "select flag FROM question_clueminati INNER JOIN login_clueminati ON question_clueminati.id=login_clueminati.cur_id where login_clueminati.rollno = $1" ,[rollno],
     callback
   );
 };
+
+
 exports.checkanswer = (rollno, callback) => {
   return pool.query(
-    "select question_clueminati.answer FROM question_clueminati INNER JOIN login_clueminati ON question_clueminati.id=login_clueminati.cur_id where login_clueminati.rollno=$1",
+    "select question_clueminati.answer FROM question_clueminati INNER JOIN login_clueminati ON question_clueminati.id=login_clueminati.cur_id and login_clueminati.rollno=$1",
     [rollno],
     callback
   );
@@ -111,9 +88,9 @@ exports.correctanswer = (score,rollno, callback) => {
   );
 };
 
-exports.updateflag = ( callback) => {
+exports.updateflag = (rollno, callback) => {
   return pool.query(
-   " UPDATE question_clueminati SET flag=1+flag from login_clueminati where question_clueminati.id=login_clueminati.cur_id ",
+   " UPDATE question_clueminati SET flag=1+flag from login_clueminati where question_clueminati.id=login_clueminati.cur_id and login_clueminati.rollno=$1 ",[rollno],
     callback
   );
 };
@@ -174,9 +151,11 @@ exports.deducthint3 = (rollno, callback) => {
   );
 };
 
+
+
 exports.leaderboard = ( callback) => {
   return pool.query(
-    "WITH Ranking AS ( SELECT *, ROW_NUMBER() OVER( ORDER BY Score desc) AS Ranks FROM login_clueminati ) SELECT rollno , score ,ranks FROM Ranking WHERE Ranks >= 1 and Ranks <=11  ORDER BY Ranks",
+    "WITH Ranking AS ( SELECT *, ROW_NUMBER() OVER( ORDER BY Score desc) AS Ranks FROM login_clueminati ) SELECT rollno , score ,ranks FROM Ranking WHERE Ranks >= 1 and Ranks <=10  ORDER BY Ranks",
     callback
   );
 };

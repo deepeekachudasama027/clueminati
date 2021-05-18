@@ -1,6 +1,6 @@
 
 
-const {selectrollno,updatefirstlogin,selecttotalhit,mainpage,checkanswer,correctanswer,updateflag,updatefirstanswer,updatewronghit, updatecurhint, selecthint, deducthint1,deducthint2,deducthint3,leaderboard,selectf,updatef0,updatef1}=require("../models/login")
+const {selectrollno,updatefirstlogin,selecttotalhit,mainpage,checkanswer,correctanswer,updateflag,updatefirstanswer,updatewronghit, updatecurhint, selecthint, deducthint1,deducthint2,deducthint3,leaderboard,selectf,updatef0,updatef1, selectflag}=require("../models/login")
 
 var roll
 
@@ -14,8 +14,7 @@ exports.login = async (request, response, next) => {
             if (getsession.rows[0].f === 1) {
                 const getrollno = await selectrollno(roll,request.body.password);
                 if(getrollno.rowCount > 0){
-                    const updatesf1 = await updatef1(roll);
-                    if(getrollno.rows[0].first_login === 0)
+                    if(getrollno.rows[0].first_login == 0)
                     {
                         var d = new Date();
                         var n = d.getTime();
@@ -25,7 +24,7 @@ exports.login = async (request, response, next) => {
                     else response.redirect("/getdata");
                 }
                 else response.render("challenges/login",{
-                    message:"Enter valid credentials"
+                    message:"Invalid Credentials"
                 });
             }
             else {
@@ -39,7 +38,7 @@ exports.login = async (request, response, next) => {
         }
         else 
         response.render("challenges/login",{
-            message:"register yourself first"
+            message:"Invalid Credentials"
         });
     }catch (err) {
         next(err)
@@ -82,20 +81,13 @@ exports.submit = async (request, response, next) => {
         if(getsession.rowCount>0){
         if (getsession.rows[0].f === 1) {
             const check = await checkanswer(roll);
+            const selectl = await selectflag()
             if(request.body.guess === check.rows[0].answer){
-                if (check.rows[0].flag === 1) {
-                    var d = new Date();
-                    var n = d.getTime();
-                    var score;
-                    if ((n - check.rows[0].first_time) / 1000 < 60) score = 200;
-                    else if (
-                      (n - check.rows[0].first_time) / 1000 < 120 &&
-                      (n - check.rows[0].first_time) / 1000 >= 60
-                    )
-                    score = 170;
-                    else score = 150;
-
-                    const updatescore=await correctanswer(score,n,roll);
+                if (selectl.rows[0].flag<15 && selectl.rows[0].flag >1) {
+                    const updatedl=await updateflag()
+                    const selectl = await selectflag()
+                   score=200-(selectl.rows[0].flag)*10;
+                    const updatescore=await correctanswer(score,roll);
                     const selecttotal_hit=await selecttotalhit(roll);
                     if(selecttotal_hit.rows[0].total_hit === 6)
                     {
@@ -111,11 +103,9 @@ exports.submit = async (request, response, next) => {
                           });
                     }
             }
-            else{
-                var d = new Date();
-                var n = d.getTime();
+            else if (selectl.rows[0].flag == 1 ){
                 const updatefirst_login = await updatefirstanswer(200,roll);
-                const updatefq=await updateflag(n,roll)
+                const updatefq=await updateflag()
                 const selecttotal_hit=await selecttotalhit(roll);
                     if(selecttotal_hit.rows[0].total_hit === 6)
                     {
@@ -131,6 +121,23 @@ exports.submit = async (request, response, next) => {
                           });
                     }
 
+            }
+            else {
+                const updatefq=await updateflag()
+                const selecttotal_hit=await selecttotalhit(roll);
+                    if(selecttotal_hit.rows[0].total_hit === 6)
+                    {
+                        request.session.loggedIn = false;
+                          response.render("challenges/thanks");
+                    }
+                    else {
+                        const getmain = await mainpage(roll);
+                        response.render("layout/main", {
+                            score: getmain.rows[0].score,
+                            question:getmain.rows[0].question,
+                            id: getmain.rows[0].id,
+                          });
+                    }
             }
         }
         else {

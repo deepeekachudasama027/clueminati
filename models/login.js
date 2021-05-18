@@ -1,29 +1,21 @@
 var pool = require("../controllers/db");
 
 pool.query(
-  "INSERT into question_clueminati (question , id, answer, hint1 , hint2, hint3 , first_time, flag) values ('16.jpg','1','a','Crowd','Cheap','OLX','0','0') ON CONFLICT DO NOTHING",
+  "INSERT into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('1.jpg','1','facebook','Book','Socialise','Mark') ON CONFLICT DO NOTHING",
   function (err, result) {
     if (err) console.log(err);
   }
 );
 
 pool.query(
-  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 , first_time, flag) values ('16.jpg','2','b','Crowd','Cheap','OLX','0','0') ON CONFLICT DO NOTHING ",
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('2.jpg','2','tomcruise','Tom','Big Ship','Mission Impossible') ON CONFLICT DO NOTHING ",
   function (err, result) {
     if (err) console.log(err);
   }
 );
 
 pool.query(
-  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 , first_time, flag) values ('16.jpg','3','c','Crowd','Cheap','OLX','0','0') ON CONFLICT DO NOTHING ",
-  function (err, result) {
-    if (err) console.log(err);
-  }
-);
-
-
-pool.query(
-  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 , first_time, flag) values ('16.jpg','4','d','Crowd','Cheap','OLX','0','0') ON CONFLICT DO NOTHING ",
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('3.jpg','3','dokodemodoor','Transportation','portable','Doraemon') ON CONFLICT DO NOTHING ",
   function (err, result) {
     if (err) console.log(err);
   }
@@ -31,7 +23,7 @@ pool.query(
 
 
 pool.query(
-  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 , first_time, flag) values ('16.jpg','5','e','Crowd','Cheap','OLX','0','0') ON CONFLICT DO NOTHING",
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('4.jpg','4','brocode','Universal Rule','Never Ever break these rules','Bro') ON CONFLICT DO NOTHING ",
   function (err, result) {
     if (err) console.log(err);
   }
@@ -39,11 +31,13 @@ pool.query(
 
 
 pool.query(
-  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 , first_time, flag) values ('16.jpg','6','f','Crowd','Cheap','OLX','0','0') ON CONFLICT DO NOTHING",
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('5.jpg','5','ironman','Genius','Billionare','Superhero') ON CONFLICT DO NOTHING",
   function (err, result) {
     if (err) console.log(err);
   }
 );
+
+
 
 exports.selectf = (rollno, callback) => {
   return pool.query(
@@ -71,14 +65,13 @@ exports.updatef1 = (rollno, callback) => {
 
 exports.selectrollno = (rollno,password, callback) => {
   return pool.query(
-    "select rollno from  login_clueminati WHERE rollno = $1 AND password =$2" ,
+    "select rollno,first_login from  login_clueminati WHERE rollno = $1 AND password =$2" ,
     [rollno,password],
     callback
   );
 };
 
 exports.updatefirstlogin = (n,rollno, callback) => {
-  console.log(1);
   return pool.query(
     "UPDATE login_clueminati SET first_login=$1 where rollno =$2 ",[n,rollno],
     callback
@@ -101,26 +94,31 @@ exports.mainpage = (rollno, callback) => {
   );
 };
 
+exports.selectflag = (rollno, callback) => {
+  return pool.query(
+    "select question_clueminati.flag FROM question_clueminati INNER JOIN login_clueminati ON question_clueminati.id=login_clueminati.cur_id ",
+    callback
+  );
+};
 exports.checkanswer = (rollno, callback) => {
   return pool.query(
-    "select question_clueminati.answer,login_clueminati.rollno, question_clueminati.first_time,question_clueminati.flag,question_clueminati.id FROM question_clueminati INNER JOIN login_clueminati ON question_clueminati.id=login_clueminati.cur_id where login_clueminati.rollno=$1",
+    "select question_clueminati.answer,login_clueminati.rollno,question_clueminati.flag,question_clueminati.id,login_clueminati.score FROM question_clueminati INNER JOIN login_clueminati ON question_clueminati.id=login_clueminati.cur_id where login_clueminati.rollno=$1",
     [rollno],
     callback
   );
 };
 
-exports.correctanswer = (score,n,rollno, callback) => {
+exports.correctanswer = (score,rollno, callback) => {
   return pool.query(
-    "UPDATE login_clueminati SET cur_id = cur_id+1,score=score+$1,cur_img_time=$2,total_hit = total_hit+1,wrong_hit=0,curhint=0 from question_clueminati where rollno =$3 and question_clueminati.id=login_clueminati.cur_id",
-    [score, n, rollno],
+    "UPDATE login_clueminati SET cur_id = cur_id+1,score=score+$1,total_hit = total_hit+1,wrong_hit=0,curhint=0 from question_clueminati where rollno =$2 and question_clueminati.id=login_clueminati.cur_id",
+    [score, rollno],
     callback
   );
 };
 
-exports.updateflag = (n,rollno, callback) => {
+exports.updateflag = ( callback) => {
   return pool.query(
-   " UPDATE question_clueminati SET flag=1,first_time=$1 from login_clueminati where question_clueminati.id=login_clueminati.cur_id and rollno =$2",
-    [n,rollno],
+   " UPDATE question_clueminati SET flag=1+flag from login_clueminati where question_clueminati.id=login_clueminati.cur_id ",
     callback
   );
 };

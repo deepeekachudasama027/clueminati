@@ -83,13 +83,13 @@ exports.submit = async (request, response, next) => {
             const check = await checkanswer(roll);
             const selectl = await selectflag()
             if(request.body.guess === check.rows[0].answer){
+                const updatedl=await updateflag()
                 if (selectl.rows[0].flag<15 && selectl.rows[0].flag >1) {
-                    const updatedl=await updateflag()
                     const selectl = await selectflag()
                    score=200-(selectl.rows[0].flag)*10;
                     const updatescore=await correctanswer(score,roll);
                     const selecttotal_hit=await selecttotalhit(roll);
-                    if(selecttotal_hit.rows[0].total_hit === 6)
+                    if(selecttotal_hit.rows[0].total_hit === 5)
                     {
                         request.session.loggedIn = false;
                           response.render("challenges/thanks");
@@ -105,9 +105,8 @@ exports.submit = async (request, response, next) => {
             }
             else if (selectl.rows[0].flag == 1 ){
                 const updatefirst_login = await updatefirstanswer(200,roll);
-                const updatefq=await updateflag()
                 const selecttotal_hit=await selecttotalhit(roll);
-                    if(selecttotal_hit.rows[0].total_hit === 6)
+                    if(selecttotal_hit.rows[0].total_hit === 5)
                     {
                         request.session.loggedIn = false;
                           response.render("challenges/thanks");
@@ -123,9 +122,8 @@ exports.submit = async (request, response, next) => {
 
             }
             else {
-                const updatefq=await updateflag()
                 const selecttotal_hit=await selecttotalhit(roll);
-                    if(selecttotal_hit.rows[0].total_hit === 6)
+                    if(selecttotal_hit.rows[0].total_hit === 5)
                     {
                         request.session.loggedIn = false;
                           response.render("challenges/thanks");

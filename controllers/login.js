@@ -8,6 +8,7 @@ exports.login = async (request, response, next) => {
     try{
         if(`${request.body.rollno}`.length===9  && request.body.rollno>=100000000 && request.body.password)
         {
+            console.log(request.session);
             const getsession= await selectf(request.body.rollno)
             if(getsession.rowCount>0){
             roll=getsession.rows[0].rollno

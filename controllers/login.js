@@ -78,7 +78,7 @@ exports.submit = async (request, response, next) => {
                 const updatedl=await updateflag()
                 const selectl = await selectflag()
                 if (selectl.rows[0].flag<15 && selectl.rows[0].flag >1) {
-                    console.log(selectl.rows[0].id,selectl.rows[0].flag,selectl.rows[0].score)
+                    console.log(selectl.rows[0].id,selectl.rows[0].flag,selectl.rows[0].score,1)
                    score=200-(selectl.rows[0].flag)*10;
                     const updatescore=await correctanswer(score,roll);
                     const selecttotal_hit=await selecttotalhit(roll);
@@ -97,7 +97,7 @@ exports.submit = async (request, response, next) => {
                     }
             }
             else if (selectl.rows[0].flag == 1 ){
-                console.log(selectl.rows[0].id,selectl.rows[0].flag,selectl.rows[0].score)
+                console.log(selectl.rows[0].id,selectl.rows[0].flag,selectl.rows[0].score,2)
                 const updatefirst_login = await updatefirstanswer(200,roll);
                 const selecttotal_hit=await selecttotalhit(roll);
                 if(selecttotal_hit.rows[0].total_hit === 5)
@@ -116,6 +116,7 @@ exports.submit = async (request, response, next) => {
 
             }
             else {
+                console.log(selectl.rows[0].id,selectl.rows[0].flag,selectl.rows[0].score,3)
                 const updatefirst_login = await updatefirstanswer(50,roll);
                 const selecttotal_hit=await selecttotalhit(roll);
                 if(selecttotal_hit.rows[0].total_hit === 5)

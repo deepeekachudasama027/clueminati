@@ -14,14 +14,7 @@ exports.login = async (request, response, next) => {
             if (getsession.rows[0].f === 1) {
                 const getrollno = await selectrollno(roll,request.body.password);
                 if(getrollno.rowCount > 0){
-                    if(getrollno.rows[0].first_login == 0)
-                    {
-                        var d = new Date();
-                        var n = d.getTime();
-                        const updatefirstlogin_=await updatefirstlogin(n,roll);
-                        response.redirect("/getdata");
-                    }
-                    else response.redirect("/getdata");
+                    response.redirect("/getdata");
                 }
                 else response.render("challenges/login",{
                     message:"Invalid Credentials"
@@ -51,9 +44,9 @@ exports.getdata = async (request, response, next) => {
         if(getsession.rowCount>0){
             if (getsession.rows[0].f === 1) {
             const selecttotal_hit=await selecttotalhit(roll);
-            if(selecttotal_hit.rows[0].total_hit === 6)
+            if(selecttotal_hit.rows[0].total_hit === 5)
             {
-                request.session.loggedIn = false;
+                const updatesf = await updatef0(roll);
                   response.render("challenges/thanks");
             }
             else {
@@ -81,17 +74,17 @@ exports.submit = async (request, response, next) => {
         if(getsession.rowCount>0){
         if (getsession.rows[0].f === 1) {
             const check = await checkanswer(roll);
-            const selectl = await selectflag()
             if(request.body.guess === check.rows[0].answer){
                 const updatedl=await updateflag()
+                const selectl = await selectflag()
                 if (selectl.rows[0].flag<15 && selectl.rows[0].flag >1) {
-                    const selectl = await selectflag()
+                    console.log(selectl.rows[0].id,selectl.rows[0].flag,selectl.rows[0].score)
                    score=200-(selectl.rows[0].flag)*10;
                     const updatescore=await correctanswer(score,roll);
                     const selecttotal_hit=await selecttotalhit(roll);
                     if(selecttotal_hit.rows[0].total_hit === 5)
                     {
-                        request.session.loggedIn = false;
+                        const updatesf = await updatef0(roll);
                           response.render("challenges/thanks");
                     }
                     else{
@@ -104,13 +97,14 @@ exports.submit = async (request, response, next) => {
                     }
             }
             else if (selectl.rows[0].flag == 1 ){
+                console.log(selectl.rows[0].id,selectl.rows[0].flag,selectl.rows[0].score)
                 const updatefirst_login = await updatefirstanswer(200,roll);
                 const selecttotal_hit=await selecttotalhit(roll);
-                    if(selecttotal_hit.rows[0].total_hit === 5)
-                    {
-                        request.session.loggedIn = false;
-                          response.render("challenges/thanks");
-                    }
+                if(selecttotal_hit.rows[0].total_hit === 5)
+                {
+                    const updatesf = await updatef0(roll);
+                      response.render("challenges/thanks");
+                }
                     else {
                         const getmain = await mainpage(roll);
                         response.render("layout/main", {
@@ -122,12 +116,13 @@ exports.submit = async (request, response, next) => {
 
             }
             else {
+                const updatefirst_login = await updatefirstanswer(50,roll);
                 const selecttotal_hit=await selecttotalhit(roll);
-                    if(selecttotal_hit.rows[0].total_hit === 5)
-                    {
-                        request.session.loggedIn = false;
-                          response.render("challenges/thanks");
-                    }
+                if(selecttotal_hit.rows[0].total_hit === 5)
+                {
+                    const updatesf = await updatef0(roll);
+                      response.render("challenges/thanks");
+                }
                     else {
                         const getmain = await mainpage(roll);
                         response.render("layout/main", {

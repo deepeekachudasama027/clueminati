@@ -91,13 +91,13 @@ exports.mainpage = (rollno, callback) => {
 
 exports.selectflag = (rollno, callback) => {
   return pool.query(
-    "select question_clueminati.flag FROM question_clueminati INNER JOIN login_clueminati ON question_clueminati.id=login_clueminati.cur_id ",
+    "select question_clueminati.flag,id,score FROM question_clueminati INNER JOIN login_clueminati ON question_clueminati.id=login_clueminati.cur_id ",
     callback
   );
 };
 exports.checkanswer = (rollno, callback) => {
   return pool.query(
-    "select question_clueminati.answer,login_clueminati.rollno,question_clueminati.flag,question_clueminati.id,login_clueminati.score FROM question_clueminati INNER JOIN login_clueminati ON question_clueminati.id=login_clueminati.cur_id where login_clueminati.rollno=$1",
+    "select question_clueminati.answer FROM question_clueminati INNER JOIN login_clueminati ON question_clueminati.id=login_clueminati.cur_id where login_clueminati.rollno=$1",
     [rollno],
     callback
   );

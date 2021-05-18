@@ -6,7 +6,6 @@ const {selectrollno,selecttotalhit,mainpage,checkanswer,correctanswer,updatefirs
 
 exports.login = async (request, response, next) => {
     try{
-        console.log(request.session)
         var rollno = request.body.rollno;
         var password = request.body.password;
         if(`${rollno}`.length===9  && rollno>=100000000 && password)

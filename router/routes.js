@@ -8,11 +8,11 @@ router.post("/auth", login);
 router.get("/logout", logout);
 
 
-router.get("/", (request, response) => {
+router.get("/login", (request, response) => {
   response.render("challenges/login");
 });
 
-router.get("/getdata",getdata);
+router.get("/",getdata);
 
 router.post("/submit", submit);
 

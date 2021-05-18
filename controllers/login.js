@@ -1,50 +1,33 @@
 
 
-const {selectrollno,updatefirstlogin,selecttotalhit,mainpage,checkanswer,correctanswer,updateflag,updatefirstanswer,updatewronghit, updatecurhint, selecthint, deducthint1,deducthint2,deducthint3,leaderboard,selectf,updatef0,updatef1, selectflag}=require("../models/login")
+const {selectrollno,selecttotalhit,mainpage,checkanswer,correctanswer,updatefirstanswer,updatewronghit, updatecurhint, selecthint, deducthint1,deducthint2,deducthint3,leaderboard}=require("../models/login")
 
-var roll
+
 
 exports.login = async (request, response, next) => {
     try{
-        if(`${request.body.rollno}`.length===9  && request.body.rollno>=100000000 && request.body.password)
+        console.log(request.session)
+        var rollno = request.body.rollno;
+        var password = request.body.password;
+        if(`${rollno}`.length===9  && rollno>=100000000 && password)
         {
-            console.log(request.session);
-            const getsession= await selectf(request.body.rollno)
-            if(getsession.rowCount>0){
-            roll=getsession.rows[0].rollno
-            console.log(roll)
-            if (getsession.rows[0].f === 1) {
-                const getrollno = await selectrollno(roll,request.body.password);
-                if(getrollno.rowCount > 0){
-                    response.redirect("/getdata");
+            const getrollno = await selectrollno(rollno,password);
+                if(getrollno.rowCount>0)
+                {
+                    request.session.loggedIn = true;
+                    request.session.rollno = getrollno.rows[0].rollno ;
+                    response.redirect("/");
                 }
-                else {
-                    const updatef_0= await updatef0(roll);
-                    response.render("challenges/login",{
-                    message:"Invalid Credentials"
-                });}
-            }
-            else {
-                const auth =await selectrollno(request.body.rollno,request.body.password);
-                if(auth.rowCount>0) {
-                const updatesf1 = await updatef1(roll);
-                 response.redirect("/getdata");}
-                 else
-                 {
-                  const updatef_0= await updatef0(roll);
+                else 
+                {
                     response.render("challenges/login",{
                         message:"Invalid Credentials"
-                    });
-                 }
-            }
-        }
-        else response.render("challenges/login",{
-            message:"Register on INFOTREK'21 website"
-        });
+                    })
+                }
         }
         else 
         {
-          const updatef_0= await updatef0(roll);
+          
         response.render("challenges/login",{
             message:"Invalid Credentials"
         });}
@@ -55,17 +38,15 @@ exports.login = async (request, response, next) => {
 
 exports.getdata = async (request, response, next) => {
     try{
-        const getsession= await selectf(roll)
-        if(getsession.rowCount>0){
-            if (getsession.rows[0].f === 1) {
-            const selecttotal_hit=await selecttotalhit(roll);
+        if (request.session.loggedIn) {
+            const selecttotal_hit=await selecttotalhit(request.session.rollno);
             if(selecttotal_hit.rows[0].total_hit === 5)
             {
-                const updatesf = await updatef0(roll);
+                request.session.loggedIn = false;
                   response.render("challenges/thanks");
             }
             else {
-                const getmain = await mainpage(roll);
+                const getmain = await mainpage(request.session.rollno);
                 response.render("layout/main", {
                             score: getmain.rows[0].score,
                             question:getmain.rows[0].question,
@@ -74,12 +55,8 @@ exports.getdata = async (request, response, next) => {
             }
         }
         else {
-
-            response.redirect("/");
+            response.redirect("login");
           }
-        }
-        else 
-            response.render("challenges/error");
 }catch (err) {
     next(err)
   }
@@ -87,27 +64,20 @@ exports.getdata = async (request, response, next) => {
 
 exports.submit = async (request, response, next) => {
     try{
-        const getsession= await selectf(roll)
-        if(getsession.rowCount>0){
-        if (getsession.rows[0].f === 1) {
-            const check = await checkanswer(roll);
+        if (request.session.loggedIn) {
+            const check = await checkanswer(request.session.rollno);
             if(request.body.guess === check.rows[0].answer){
-                var selectl = await selectflag(roll)
-                console.log(selectl.rows[0].id,selectl.rows[0].flag,selectl.rows[0].score,selectl.rows[0].rollno,0)
-                const updatedl=await updateflag()
-                 selectl = await selectflag(roll)
                 if (selectl.rows[0].flag<15 && selectl.rows[0].flag >1) {
-                    console.log(selectl.rows[0].id,selectl.rows[0].flag,selectl.rows[0].score,selectl.rows[0].rollno,1)
-                   score=200-(selectl.rows[0].flag)*10;
-                    const updatescore=await correctanswer(score,roll);
-                    const selecttotal_hit=await selecttotalhit(roll);
+                    score=200-(selectl.rows[0].flag)*10;
+                    const updatescore=await correctanswer(score,request.session.rollno);
+                    const selecttotal_hit=await selecttotalhit(request.session.rollno);
                     if(selecttotal_hit.rows[0].total_hit === 5)
                     {
-                        const updatesf = await updatef0(roll);
+                        request.session.loggedIn = false;
                           response.render("challenges/thanks");
                     }
                     else{
-                        const getmain = await mainpage(roll);
+                        const getmain = await mainpage(request.session.rollno);
                         response.render("layout/main", {
                             score: getmain.rows[0].score,
                             question:getmain.rows[0].question,
@@ -116,57 +86,53 @@ exports.submit = async (request, response, next) => {
                     }
             }
             else if (selectl.rows[0].flag == 1 ){
-                console.log(selectl.rows[0].id,selectl.rows[0].flag,selectl.rows[0].score,selectl.rows[0].rollno,2)
-                const updatefirst_login = await updatefirstanswer(200,roll);
-                const selecttotal_hit=await selecttotalhit(roll);
-                if(selecttotal_hit.rows[0].total_hit === 5)
-                {
-                    const updatesf = await updatef0(roll);
-                      response.render("challenges/thanks");
-                }
-                    else {
-                        const getmain = await mainpage(roll);
+                const updatefirst_login = await updatefirstanswer(200,request.session.rollno);
+                const selecttotal_hit=await selecttotalhit(request.session.rollno);
+                    if(selecttotal_hit.rows[0].total_hit === 5)
+                    {
+                        request.session.loggedIn = false;
+                          response.render("challenges/thanks");
+                    }
+                    else{
+                        const getmain = await mainpage(request.session.rollno);
                         response.render("layout/main", {
                             score: getmain.rows[0].score,
                             question:getmain.rows[0].question,
                             id: getmain.rows[0].id,
                           });
                     }
-
+            }
+            else if(selectl.rows[0].flag >= 15)
+            {
+                const updatefirst_login = await updatefirstanswer(50,roll);
+                const selecttotal_hit=await selecttotalhit(request.session.rollno);
+                    if(selecttotal_hit.rows[0].total_hit === 5)
+                    {
+                        request.session.loggedIn = false;
+                          response.render("challenges/thanks");
+                    }
+                    else{
+                        const getmain = await mainpage(request.session.rollno);
+                        response.render("layout/main", {
+                            score: getmain.rows[0].score,
+                            question:getmain.rows[0].question,
+                            id: getmain.rows[0].id,
+                          });
+                    }
+            }
             }
             else {
-                console.log(selectl.rows[0].id,selectl.rows[0].flag,selectl.rows[0].score,selectl.rows[0].rollno,3)
-                const updatefirst_login = await updatefirstanswer(50,roll);
-                const selecttotal_hit=await selecttotalhit(roll);
-                if(selecttotal_hit.rows[0].total_hit === 5)
-                {
-                    const updatesf = await updatef0(roll);
-                      response.render("challenges/thanks");
-                }
-                    else {
-                        const getmain = await mainpage(roll);
-                        response.render("layout/main", {
-                            score: getmain.rows[0].score,
-                            question:getmain.rows[0].question,
-                            id: getmain.rows[0].id,
-                          });
-                    }
-            }
-        }
-        else {
-            const wronganswer= await updatewronghit(roll);
-            const getmain = await mainpage(roll);
+                const wronganswer= await updatewronghit(request.session.rollno);
+            const getmain = await mainpage(request.session.rollno);
             response.render("layout/main", {
                 score: getmain.rows[0].score,
                 question:getmain.rows[0].question,
                 id: getmain.rows[0].id,
               });
+            }
         }
-    }
-    else {
-        response.redirect("/");
-      }
-      } else  response.render("challenges/error");
+    else 
+        response.redirect("login");
     }catch (err) {
         next(err)
       }
@@ -174,14 +140,12 @@ exports.submit = async (request, response, next) => {
 
 exports.hint = async (request, response, next) => {
     try{
-        const getsession= await selectf(roll)
-        if(getsession.rowCount>0){
-        if (getsession.rows[0].f === 1) {
-            const u_curhint = await updatecurhint(roll);
-            const gethint = await selecthint(roll)
+        if (request.session.loggedIn) {
+            const u_curhint = await updatecurhint(request.session.rollno)
+            const gethint = await selecthint(request.session.rollno)
             if(gethint.rows[0].curhint === 1)
             {
-                const h1= await deducthint1(roll)
+                const h1= await deducthint1(request.session.rollno)
                 const hint = {
                     hint1: gethint.rows[0].hint1,
                     hint2: " ",
@@ -192,7 +156,7 @@ exports.hint = async (request, response, next) => {
             }
            else if(gethint.rows[0].curhint === 2)
             {
-                const h2= await deducthint2(roll)
+                const h2= await deducthint2(request.session.rollno)
                 const hint = {
                     hint1: gethint.rows[0].hint1,
                     hint2:  gethint.rows[0].hint2,
@@ -203,7 +167,7 @@ exports.hint = async (request, response, next) => {
             }
            else if(gethint.rows[0].curhint === 3)
             {
-                const h3= await deducthint3(roll)
+                const h3= await deducthint3(request.session.rollno)
                 const hint = {
                     hint1: gethint.rows[0].hint1,
                     hint2: gethint.rows[0].hint2,
@@ -214,7 +178,6 @@ exports.hint = async (request, response, next) => {
             }
           else  if(gethint.rows[0].curhint > 3)
             {
-               
                 const hint = {
                     hint1: gethint.rows[0].hint1,
                     hint2: gethint.rows[0].hint2,
@@ -224,10 +187,8 @@ exports.hint = async (request, response, next) => {
                   response.send(hint)
             }
         }
-        else {
-            response.redirect("/");
-          }
-      } else  response.render("challenges/error");
+        else 
+            response.redirect("login");
 }catch (err) {
     next(err)
   }
@@ -246,7 +207,7 @@ exports.scoreboard = async (request, response, next) => {
 
 exports.logout = async (request, response, next) => {
     try{
-        const updatesf = await updatef0(roll);
+        request.session.loggedIn = false
         response.render("challenges/login",{
             message:"logout successful "
         });

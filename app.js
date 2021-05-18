@@ -13,9 +13,8 @@ app.use(
   session({
     secret: "Keep it secret",
     name: "uniqueSessionID",
-    resave: false,
-    saveUninitialized: true,
-    cookie: {secure: true}
+    resave: true,
+    saveUninitialized: false
   })
 );
 

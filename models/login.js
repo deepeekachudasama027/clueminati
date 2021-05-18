@@ -65,18 +65,13 @@ exports.updatef1 = (rollno, callback) => {
 
 exports.selectrollno = (rollno,password, callback) => {
   return pool.query(
-    "select rollno,first_login from  login_clueminati WHERE rollno = $1 AND password =$2" ,
+    "select rollno from  login_clueminati WHERE rollno = $1 AND password =$2" ,
     [rollno,password],
     callback
   );
 };
 
-exports.updatefirstlogin = (n,rollno, callback) => {
-  return pool.query(
-    "UPDATE login_clueminati SET first_login=$1 where rollno =$2 ",[n,rollno],
-    callback
-  );
-};
+
 
 exports.selecttotalhit = (rollno, callback) => {
   return pool.query(

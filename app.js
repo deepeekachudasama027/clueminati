@@ -8,12 +8,14 @@ const errorHandler = require('./middleware/error');
 const router = require("./router/routes");
 
 const app = express();
+app.set('trust proxy',1)
 app.use(
   session({
     secret: "Keep it secret",
     name: "uniqueSessionID",
-    resave: true,
-    saveUninitialized: false,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {secure: true}
   })
 );
 

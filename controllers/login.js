@@ -6,23 +6,35 @@ var roll
 
 exports.login = async (request, response, next) => {
     try{
-        if(request.body.rollno && request.body.password)
+        if(`${request.body.rollno}`.length===9  && request.body.rollno>=100000000 && request.body.password)
         {
             const getsession= await selectf(request.body.rollno)
             if(getsession.rowCount>0){
             roll=getsession.rows[0].rollno
+            console.log(roll)
             if (getsession.rows[0].f === 1) {
                 const getrollno = await selectrollno(roll,request.body.password);
                 if(getrollno.rowCount > 0){
                     response.redirect("/getdata");
                 }
-                else response.render("challenges/login",{
+                else {
+                    const updatef_0= await updatef0(roll);
+                    response.render("challenges/login",{
                     message:"Invalid Credentials"
-                });
+                });}
             }
             else {
+                const auth =await selectrollno(request.body.rollno,request.body.password);
+                if(auth.rowCount>0) {
                 const updatesf1 = await updatef1(roll);
-                 response.redirect("/getdata");
+                 response.redirect("/getdata");}
+                 else
+                 {
+                  const updatef_0= await updatef0(roll);
+                    response.render("challenges/login",{
+                        message:"Invalid Credentials"
+                    });
+                 }
             }
         }
         else response.render("challenges/login",{
@@ -30,9 +42,11 @@ exports.login = async (request, response, next) => {
         });
         }
         else 
+        {
+          const updatef_0= await updatef0(roll);
         response.render("challenges/login",{
             message:"Invalid Credentials"
-        });
+        });}
     }catch (err) {
         next(err)
       }
@@ -59,10 +73,12 @@ exports.getdata = async (request, response, next) => {
             }
         }
         else {
+
             response.redirect("/");
           }
         }
-        else response.render("challenges/error");
+        else 
+            response.render("challenges/error");
 }catch (err) {
     next(err)
   }
@@ -75,10 +91,12 @@ exports.submit = async (request, response, next) => {
         if (getsession.rows[0].f === 1) {
             const check = await checkanswer(roll);
             if(request.body.guess === check.rows[0].answer){
+                var selectl = await selectflag(roll)
+                console.log(selectl.rows[0].id,selectl.rows[0].flag,selectl.rows[0].score,selectl.rows[0].rollno,0)
                 const updatedl=await updateflag()
-                const selectl = await selectflag()
+                 selectl = await selectflag(roll)
                 if (selectl.rows[0].flag<15 && selectl.rows[0].flag >1) {
-                    console.log(selectl.rows[0].id,selectl.rows[0].flag,selectl.rows[0].score,1)
+                    console.log(selectl.rows[0].id,selectl.rows[0].flag,selectl.rows[0].score,selectl.rows[0].rollno,1)
                    score=200-(selectl.rows[0].flag)*10;
                     const updatescore=await correctanswer(score,roll);
                     const selecttotal_hit=await selecttotalhit(roll);
@@ -97,7 +115,7 @@ exports.submit = async (request, response, next) => {
                     }
             }
             else if (selectl.rows[0].flag == 1 ){
-                console.log(selectl.rows[0].id,selectl.rows[0].flag,selectl.rows[0].score,2)
+                console.log(selectl.rows[0].id,selectl.rows[0].flag,selectl.rows[0].score,selectl.rows[0].rollno,2)
                 const updatefirst_login = await updatefirstanswer(200,roll);
                 const selecttotal_hit=await selecttotalhit(roll);
                 if(selecttotal_hit.rows[0].total_hit === 5)
@@ -116,7 +134,7 @@ exports.submit = async (request, response, next) => {
 
             }
             else {
-                console.log(selectl.rows[0].id,selectl.rows[0].flag,selectl.rows[0].score,3)
+                console.log(selectl.rows[0].id,selectl.rows[0].flag,selectl.rows[0].score,selectl.rows[0].rollno,3)
                 const updatefirst_login = await updatefirstanswer(50,roll);
                 const selecttotal_hit=await selecttotalhit(roll);
                 if(selecttotal_hit.rows[0].total_hit === 5)

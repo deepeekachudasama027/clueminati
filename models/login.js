@@ -91,7 +91,7 @@ exports.mainpage = (rollno, callback) => {
 
 exports.selectflag = (rollno, callback) => {
   return pool.query(
-    "select question_clueminati.flag,id,score FROM question_clueminati INNER JOIN login_clueminati ON question_clueminati.id=login_clueminati.cur_id ",
+    "select question_clueminati.flag,id,score,rollno FROM question_clueminati INNER JOIN login_clueminati ON question_clueminati.id=login_clueminati.cur_id where rollno = $1 ", [rollno],
     callback
   );
 };

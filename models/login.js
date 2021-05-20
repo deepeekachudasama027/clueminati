@@ -129,13 +129,6 @@ pool.query(
   }
 );
 
-// pool.query(
-//   "delete from question_clueminati where id=48 ",
-//   function (err, result) {
-//     if (err) console.log(err);
-//   }
-// );
-
 
 pool.query(
   "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('19.jpg','19','apoorvsinghkarki','UPSC','Rajendra Nagar','Tripod') ON CONFLICT DO NOTHING",

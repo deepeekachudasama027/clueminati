@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clueminati | Thank u</title>
+<link rel="icon" href="../image/template/logo.png" type="image/png">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+        *{
+             font-family: "Montserrat";
+        }
+        body {
+            animation: color-me-in 10s infinite;
+            background-image: linear-gradient(
+    to right,
+    #290657,
+    #08295a,
+    #0e4775,
+    #0e4775,
+    #08295a,
+    #290657
+  );
+        }
+
+        .image {
+            width: 40vw;
+            height: 70vh;
+            position: relative;
+            display: block;
+            margin: 0 auto;
+        }
+      
+        #thanks{
+            font-size: 2rem;
+            font-family: "Montserrat";
+            margin-left: 2rem;
+            color: aliceblue;
+            margin-top: 10rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div>
+            <a href="/" class="navbar-brand animated flip"><img src="../image/template/logo.png" alt=""></a>
+
+        </div>
+
+        <div>
+            <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+        </div>
+
+
+        <div class="navbar-links">
+            <ul>
+
+                <li><a href="/rules" >Rules</a></li>
+                <li><a href="/leaderboard" >Leaderboard</a></li>
+                <li><a href="/contact" >Contact </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="thankyou"><p id="thanks">Thank You, U successfully solved all the questions for today, comeback tomorrow</p></div>
+        <script>
+      const toggleButton = document.getElementsByClassName('toggle-button')[0]
+      const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+
+      toggleButton.addEventListener('click', () => {
+        navbarLinks.classList.toggle('active')
+      })
+    </script>
+    
+</body>
+</html>

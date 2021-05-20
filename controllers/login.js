@@ -39,10 +39,10 @@ exports.getdata = async (request, response, next) => {
     try{
         if (request.session.loggedIn) {
             const selecttotal_hit=await selecttotalhit(request.session.rollno);
-            if(selecttotal_hit.rows[0].total_hit === 50)
+            if(selecttotal_hit.rows[0].total_hit >= 25)
             {
                 request.session.loggedIn = false;
-                  response.render("challenges/thanks");
+                  response.render("challenges/thanksday");
             }
             else {
                 const getmain = await mainpage(request.session.rollno);
@@ -73,10 +73,10 @@ exports.submit = async (request, response, next) => {
                     const updatel = await updateflag(request.session.rollno)
                     const updatescore=await correctanswer(score,request.session.rollno);
                     const selecttotal_hit=await selecttotalhit(request.session.rollno);
-                    if(selecttotal_hit.rows[0].total_hit === 50)
+                    if(selecttotal_hit.rows[0].total_hit >= 25)
                     {
                         request.session.loggedIn = false;
-                          response.render("challenges/thanks");
+                          response.render("challenges/thanksday");
                     }
                     else{
                         const getmain = await mainpage(request.session.rollno);
@@ -92,10 +92,10 @@ exports.submit = async (request, response, next) => {
                 const updatel = await updateflag(request.session.rollno)
                 const updatefirst_login = await updatefirstanswer(200,request.session.rollno);
                 const selecttotal_hit=await selecttotalhit(request.session.rollno);
-                    if(selecttotal_hit.rows[0].total_hit === 50)
+                    if(selecttotal_hit.rows[0].total_hit >= 25)
                     {
                         request.session.loggedIn = false;
-                          response.render("challenges/thanks");
+                          response.render("challenges/thanksday");
                     }
                     else{
                         const getmain = await mainpage(request.session.rollno);
@@ -112,10 +112,10 @@ exports.submit = async (request, response, next) => {
                 const updatel = await updateflag(request.session.rollno)
                 const updatefirst_login = await updatefirstanswer(50,request.session.rollno);
                 const selecttotal_hit=await selecttotalhit(request.session.rollno);
-                    if(selecttotal_hit.rows[0].total_hit === 50)
+                    if(selecttotal_hit.rows[0].total_hit >= 25)
                     {
                         request.session.loggedIn = false;
-                          response.render("challenges/thanks");
+                          response.render("challenges/thanksday");
                     }
                     else{
                         const getmain = await mainpage(request.session.rollno);

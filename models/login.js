@@ -129,12 +129,12 @@ pool.query(
   }
 );
 
-pool.query(
-  "delete from question_clueminati where id=48 ",
-  function (err, result) {
-    if (err) console.log(err);
-  }
-);
+// pool.query(
+//   "delete from question_clueminati where id=48 ",
+//   function (err, result) {
+//     if (err) console.log(err);
+//   }
+// );
 
 
 pool.query(
@@ -344,12 +344,12 @@ pool.query(
   }
 );
 
-// pool.query(
-//   "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('48.jpg','48','biden','Airforce','Fallen','First Citizen') ON CONFLICT DO NOTHING",
-//   function (err, result) {
-//     if (err) console.log(err);
-//   }
-// );
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('48.jpg','48','biden','Airforce','Fallen','First Citizen') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
 
 pool.query(
   "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('49.jpg','49','zodiac','Thriller','Based on Real Life','Astrology') ON CONFLICT DO NOTHING",

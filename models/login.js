@@ -15,7 +15,7 @@ pool.query(
 );
 
 pool.query(
-  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('3.jpg','3','dokodemodoor','Transportation','portable','Doraemon') ON CONFLICT DO NOTHING ",
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('3.jpg','3','dokodemodoor','Transportation','portable','Doraemon') ON CONFLICT DO NOTHING  ",
   function (err, result) {
     if (err) console.log(err);
   }

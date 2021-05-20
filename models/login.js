@@ -474,7 +474,7 @@ exports.deducthint3 = (rollno, callback) => {
 
 exports.leaderboard = ( callback) => {
   return pool.query(
-    "WITH Ranking AS ( SELECT *, ROW_NUMBER() OVER( ORDER BY Score desc) AS Ranks FROM login_clueminati ) SELECT rollno , score ,ranks FROM Ranking WHERE Ranks >= 1 and Ranks <=10  ORDER BY Ranks and rollno <> 205120027",
+    "WITH Ranking AS ( SELECT *, ROW_NUMBER() OVER( ORDER BY Score desc) AS Ranks FROM login_clueminati ) SELECT rollno , score ,ranks FROM Ranking WHERE Ranks >= 1 and Ranks <=10  ORDER BY Ranks ",
     callback
   );
 };

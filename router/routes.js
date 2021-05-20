@@ -29,9 +29,9 @@ router.get("/contact", (request, response) => {
   });
   
 
-  // router.get("/signup", (request, response) => {
-  //   response.redirect("http://www.acmnitt.in");
-  // });
+  router.get("/signup", (request, response) => {
+    response.redirect("http://www.acmnitt.in//registration");
+  });
   
   router.get("/*", (request, response) => {
     response.render("challenges/error");

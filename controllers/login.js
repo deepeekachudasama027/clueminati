@@ -31,7 +31,7 @@ exports.login = async (request, response, next) => {
             message:"Invalid Credentials"
         });}
     }catch (err) {
-        next(err)
+      console
       }
 }
 
@@ -39,7 +39,7 @@ exports.getdata = async (request, response, next) => {
     try{
         if (request.session.loggedIn) {
             const selecttotal_hit=await selecttotalhit(request.session.rollno);
-            if(selecttotal_hit.rows[0].total_hit === 5)
+            if(selecttotal_hit.rows[0].total_hit === 50)
             {
                 request.session.loggedIn = false;
                   response.render("challenges/thanks");
@@ -58,7 +58,7 @@ exports.getdata = async (request, response, next) => {
             response.redirect("login");
           }
 }catch (err) {
-    next(err)
+  console
   }
 }
 
@@ -73,7 +73,7 @@ exports.submit = async (request, response, next) => {
                     const updatel = await updateflag(request.session.rollno)
                     const updatescore=await correctanswer(score,request.session.rollno);
                     const selecttotal_hit=await selecttotalhit(request.session.rollno);
-                    if(selecttotal_hit.rows[0].total_hit === 5)
+                    if(selecttotal_hit.rows[0].total_hit === 50)
                     {
                         request.session.loggedIn = false;
                           response.render("challenges/thanks");
@@ -92,7 +92,7 @@ exports.submit = async (request, response, next) => {
                 const updatel = await updateflag(request.session.rollno)
                 const updatefirst_login = await updatefirstanswer(200,request.session.rollno);
                 const selecttotal_hit=await selecttotalhit(request.session.rollno);
-                    if(selecttotal_hit.rows[0].total_hit === 5)
+                    if(selecttotal_hit.rows[0].total_hit === 50)
                     {
                         request.session.loggedIn = false;
                           response.render("challenges/thanks");
@@ -112,7 +112,7 @@ exports.submit = async (request, response, next) => {
                 const updatel = await updateflag(request.session.rollno)
                 const updatefirst_login = await updatefirstanswer(50,request.session.rollno);
                 const selecttotal_hit=await selecttotalhit(request.session.rollno);
-                    if(selecttotal_hit.rows[0].total_hit === 5)
+                    if(selecttotal_hit.rows[0].total_hit === 50)
                     {
                         request.session.loggedIn = false;
                           response.render("challenges/thanks");
@@ -142,7 +142,7 @@ exports.submit = async (request, response, next) => {
     else 
         response.redirect("login");
     }catch (err) {
-        next(err)
+      console
       }
 }
 
@@ -198,7 +198,7 @@ exports.hint = async (request, response, next) => {
         else 
             response.redirect("login");
 }catch (err) {
-    next(err)
+  console
   }
 }
 
@@ -208,7 +208,7 @@ exports.scoreboard = async (request, response, next) => {
         response.render("challenges/leaderboard", { data: ld.rows });
 
     }catch (err) {
-    next(err)
+  console
   }
 }
 
@@ -221,6 +221,6 @@ exports.logout = async (request, response, next) => {
         });
 
     }catch (err) {
-    next(err)
+  console
   }
 }

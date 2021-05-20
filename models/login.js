@@ -37,6 +37,331 @@ pool.query(
   }
 );
 
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('6.jpg','6','themask','Loki','Jim Carrey','Cartoon from 90s') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('7.jpg','7','kiterunner','Two Friends','Loyalty','Afghanistan') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('8.jpg','8','privacypolicy','WhatsApp','Surveillance','Encryption') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('9.jpg','9','spot','TBBT','Sheldon','Reserved Place') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('10.jpeg','10','captainjacksparrow','Sea','Captain','Jackie') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('11.jpeg','11','firefox','Nine Tailed Fox','Open Source','Fire') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('12.jpg','12','oops','Characteristics','Internship','SEM II') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('13.jpg','13','sanamterikasam','Library','Disease','Love Story') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('14.jpg','14','naruto','Anime','Ramen','Fox') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('15.jpg','15','paw','Pav','Dog','Cat') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('16.png','16','dairymilksilk','Soft','Sweet','Milk') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('17.jpeg','17','onepiece','Straw Hat','Pirates','Treasure') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('18.jpg','18','hackerearth','Hacking','International','Platform') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('19.jpg','19','avinash','UPSC','Rajendra Nagar','Tripod') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('20.jpg','20','satanshoes','NIKE','Drop','Blood') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('21.jpg','21','deathnote','Death','Anime','Notebook') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('22.jpg','22','amazon','Series','Family','Prime') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('23.jpg','23','donaldtrump','Doesnot believe in climate change','Wall','Twitter') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('24.jpg','24','mandragora','Dangerous','Magic','Harry Potter') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('25.jpg','25','christophernolan','Chris','No','L.A.N') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('26.jpg','26','streaming','Small River','Verb','Network') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('27.jpg','27','ganesh','Epic','Shiva','Writer') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('28.jpg','28','bullehshah','Sufi','Punjab','Poet') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('29.jpg','29','superman','Strong','CAL','Henry') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('30.jpeg','30','disarm','Take Away','Expelliarmus','Arm') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('31.png','31','neo','Stimulation','Movie','Protagonist') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('32.jpg','32','hoteltransylvania','Place','Animation','Hotel') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('33.jpg','33','shiva','Gangadhar','Beyond a demigod','Destroyer') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('34.png','34','iran','Western Asia','Gas Reserves','Country') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('35.jpg','35','kalaripayattu','South Asia','Origin','Martial Art') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('36.jpg','36','russia','My Shoes','Country','Cap') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('37.jpg','37','santoshlal','Sixer','Helicopter Shot','origin') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('38.png','38','octagon','Lab','RECT','8') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('39.png','39','lafinaletrois','Interview','NITT','Meme Blast') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('40.jpg','40','acm','Awareness','Technews','RMT') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('41.jpg','41','lockdown','Checkmate','Donot Move','Stay Home') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('42.jpg','42','vidyutjammwal','Fit India','Martial Artist','Actor') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('43.png','43','bibleofmathematics','8:30','Sem I','CA713') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('44.jpg','44','waltdisney','Mouse','Bikky','Voice') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+// pool.query(
+//   "delete from question_clueminati where id = 45",
+//   function (err, result) {
+//     if (err) console.log(err);
+//   }
+// );
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('45.jpg','45','rigveda','Knowledge','Ancient','Sanskrit') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('46.jpeg','46','modifieddistribution','Mathematics','Transportation','RMT') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('47.jpg','47','gravity','Fabric','Relativity','Issac') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('48.jpg','48','biden','Airforce','Fallen','First Citizen') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('49.jpg','49','zodiac','Thriller','Based on Real Life','Astrology') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
+
+pool.query(
+  "INSERT  into question_clueminati (question , id, answer, hint1 , hint2, hint3 ) values ('50.jpg','50','pareshrawal','Laxmi','Narayan','Ganpat') ON CONFLICT DO NOTHING",
+  function (err, result) {
+    if (err) console.log(err);
+  }
+);
 
 exports.selectrollno = (rollno,password, callback) => {
   return pool.query(

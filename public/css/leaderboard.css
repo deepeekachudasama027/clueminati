@@ -1,41 +1,23 @@
-@import url("https://fonts.googleapis.com/css?family=Yatra One");
+@import url("https://fonts.googleapis.com/css2?family=Yatra+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Wallpoet&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 * {
   box-sizing: border-box;
-  background: rgb(9, 95, 121);
-  font-family: "Yatra One";
+  background-color: rgb(14, 14, 56);
+  font-family: "Montserrat";
 }
 
-.navbar {
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background: transparent !important;
-}
-
-.logo {
-  animation-duration: 3s !important;
-  animation-fill-mode: both;
-  animation-iteration-count: infinite;
-  backface-visibility: visible;
-  animation-name: flip;
-  text-align: center;
-}
 
 .main{
-  margin-top: -6rem;
+  margin-top: 0.5rem;
 }
 
   .event-page {
     font-size: 6vh;
     color: black;
     text-align: center;
-    text-shadow: 2px 2px gray;
+    text-shadow: 2px 2px rgb(243, 239, 239);
   }
 
 @keyframes flip {
@@ -53,84 +35,8 @@
   }
 }
 
-.navbar-links {
-  height: 100%;
-}
-
-.navbar-links ul {
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar-links li {
-  list-style: none;
-  margin-right: 2rem;
-}
-
-.navbar-links li a {
-  display: block;
-  text-decoration: none;
-  color: peachpuff;
-  padding: 1rem;
-  font-size: 20px;
-}
-
-.navbar-links :hover {
-  color: #f77062;
-  transition: all 0.3s ease;
-}
-
-.toggle-button {
-  position: absolute;
-  top: 0.75rem;
-  right: 1rem;
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 21px;
-  margin-top: 1.1rem;
-}
-
-.toggle-button .bar {
-  height: 3px;
-  width: 100%;
-  background-color: antiquewhite !important;
-  border-radius: 10px;
-}
-
 @media (max-width: 1080px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .toggle-button {
-    display: flex;
-  }
-
-  .navbar-links {
-    display: none;
-    width: 100%;
-  }
-
-  .navbar-links ul {
-    width: 100%;
-    flex-direction: column;
-  }
-
-  .navbar-links ul li {
-    text-align: center;
-  }
-
-  .navbar-links ul li a {
-    padding: 0.5rem 1rem;
-  }
-
-  .navbar-links.active {
-    display: flex;
-  }
+ 
 }
 
 #players {
@@ -169,6 +75,7 @@
   .event-page{
     display: none;
   }
+  
 }
 
 /* Media Query for Tablets Ipads portrait mode */

@@ -1,23 +1,24 @@
-@import url("https://fonts.googleapis.com/css?family=Yatra One");
-
+@import url("https://fonts.googleapis.com/css2?family=Yatra+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Wallpoet&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Yatra One";
+  font-family: "Montserrat";
 }
 
 body {
   animation: color-me-in 10s infinite;
-}
-
-@keyframes color-me-in {
-  0% {
-    background: rgb(13, 151, 185);
-  }
-  100% {
-    background: rgb(5, 101, 131);
-  }
+  background-image: linear-gradient(
+    to right,
+    #290657,
+    #08295a,
+    #0e4775,
+    #0e4775,
+    #08295a,
+    #290657
+  );
 }
 
 .navbar {
@@ -71,19 +72,20 @@ body {
 
 .navbar-links li {
   list-style: none;
+  margin-top: -4rem;
   margin-right: 2rem;
 }
 
 .navbar-links li a {
   display: block;
   text-decoration: none;
-  color: peachpuff;
+  color: white;
   padding: 1rem;
   font-size: 20px;
 }
 
 .navbar-links :hover {
-  color: #f77062;
+  color: rgb(209, 143, 209);
   transition: all 0.3s ease;
 }
 
@@ -113,6 +115,7 @@ body {
   }
 
   .toggle-button {
+    margin-top: 2.5rem;
     display: flex;
   }
 
@@ -124,18 +127,48 @@ body {
   .navbar-links ul {
     width: 100%;
     flex-direction: column;
+    margin-top: -2rem;
   }
 
   .navbar-links ul li {
-    text-align: center;
+    text-align: right;
   }
 
   .navbar-links ul li a {
-    padding: 0.5rem 1rem;
+    padding: 2.5rem 0.5rem;
+    font-size: 2vh !important;
   }
 
+  #roll {
+    margin-right: 0.5rem !important;
+    padding: 1.6rem 0.1rem;
+    font-size: 2vh !important;
+  }
   .navbar-links.active {
     display: flex;
+  }
+
+  .challenge {
+    position: absolute;
+    left: 50% !important;
+    z-index: 1 !important;
+    text-transform: uppercase;
+    font-family: Wallpoet, sans-serif;
+    color: white !important;
+    text-shadow: -1px -1.5px rgb(11, 186, 240),
+      1.5px 3px hsla(294, 51%, 8%, 0.904);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.5vh !important;
+    font-weight: bolder;
+    color: rgb(194, 191, 191) !important;
+  }
+
+  .image{
+    width:30vw !important;
+    height: 30vh !important;
+    margin-bottom: 2rem !important;
   }
 }
 
@@ -154,18 +187,33 @@ body {
   font-size: 1em;
   cursor: pointer;
   background-color: rgb(7, 5, 5);
-  margin-left: 1vw;
+  margin-left: 2vw;
   border-radius: 0.5em;
-  margin-top: -3rem;
+}
+
+#roll {
+  margin-top: 1.2rem;
+  font-size: 2vh;
+  margin-right: 2rem;
+  color: yellow;
 }
 
 .challenge {
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 5vh;
+  z-index: 1 !important;
+  text-transform: uppercase;
+  font-family: Wallpoet, sans-serif;
+  color: white !important;
+  text-shadow: -1px -1.5px rgb(11, 186, 240),
+    1.5px 3px hsla(294, 51%, 8%, 0.904);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 6vh;
   font-weight: bolder;
-  color: rgb(31, 5, 78);
+  color: rgb(194, 191, 191) !important;
 }
 
 .iconify {
@@ -173,16 +221,16 @@ body {
   width: 40px;
   height: 40px;
   float: right;
-  margin-top: -0.5rem;
+  margin-top: 2rem;
   margin-right: 1vw;
 }
 
 .score {
-  color: rgb(17, 2, 44);
+  color: white;
   font-weight: bold;
   font-size: x-large;
   float: right;
-  margin-top: 0.2rem;
+  margin-top: 2rem;
   margin-right: 3vw;
 }
 
@@ -193,17 +241,18 @@ body {
 .image {
   border-radius: 10px 10px 10px 10px;
   border: 7px solid rgb(31, 5, 78);
-  width: 40vw;
-  height: 50vh;
+  width: 30vw;
+  height: 40vh;
   position: relative;
   display: block;
   margin: 0 auto;
 }
 .answer {
-  width: 40vw;
+  width: 30vw;
   padding: 10px 15px;
   background-color: white;
-  border-radius: 16px 0px 16px 0px;
+  /* border-radius: 15px 0px 15px 0px; */
+  border-radius: 12px 12px 12px 12px;
   border-top: black;
   border-bottom: 2px solid black;
   font-size: 20px;
@@ -211,7 +260,8 @@ body {
   position: relative;
   display: block;
   margin: 0 auto;
-  margin-top: 1%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .btn1 {
@@ -223,34 +273,49 @@ body {
   transition-duration: 0.4s;
   cursor: pointer;
   background-color: rgb(143, 223, 143);
-  border: 2px solid rgb(7, 122, 7);
+  border: 2px solid rgb(129, 175, 129);
   border-radius: 8px 8px 8px 8px;
   width: 20vh;
   position: relative;
   display: block;
   margin: 0 auto;
-  margin-top: 0.5%;
 }
 .btn1:hover {
-  background-color: rgb(7, 122, 7);
+  background-color: rgb(48, 240, 48);
   color: white;
 }
 
 @media (max-width: 480px) {
   .challenge {
-    font-size: 2.7vh;
+    /* margin-left: -0.5rem;
+    margin-top: 2rem; */
+    font-size: 2.3vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .challenge {
+    margin-left: -0.5rem;
+    margin-top: 2rem;
+    font-size: 2.3vh;
   }
   .image {
-    width: 70vw;
+    width: 80vw !important;
   }
   .answer {
-    width: 70vw;
+    width: 80vw;
   }
   .btn1 {
     width: 22vw;
     text-align: center;
   }
   .score {
+    margin-top: 1rem;
     font-size: medium;
+  }
+  .iconify {
+    width: 30px;
+    height: 30px;
+    margin-top: 1rem;
   }
 }

@@ -1,36 +1,41 @@
 @import url("https://fonts.googleapis.com/css?family=Yatra One");
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Wallpoet&display=swap");
 body {
-  font-family: "Yatra One";
+  font-family: "Montserrat";
   animation: color-me-in 10s infinite;
+  background-image: linear-gradient(
+    to right,
+    #290657,
+    #08295a,
+    #0e4775,
+    #0e4775,
+    #08295a,
+    #290657
+  );
 }
 
-@keyframes color-me-in {
-    0% {
-      background: rgb(13, 151, 185);
-    }
-    100% {
-      background: rgb(5, 101, 131);
-    }
-  }
+
 .main{
-  margin-top: -2rem;
+  margin-top: -5rem;
 }
 
   .event-page {
     font-size: 6vh;
     color: black;
     text-align: center;
-    text-shadow: 2px 2px gray;
+    text-transform: uppercase;
+    font-family: Montserrat, sans-serif;
+    text-shadow: 2px 2px rgb(248, 229, 229);
   }
 ol{
-    font-size: 3vh;
+    font-size: 2.5vh;
     margin-left: 2vw; 
-    color: rgb(28, 6, 34);
+    color: white;
 }
 
 ul{
-    font-size: 3vh;
+    font-size: 2.5vh;
 }
 
 

@@ -1,186 +1,182 @@
-@import url("https://fonts.googleapis.com/css?family=Yatra One");
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Yatra One";
-}
-
+@import url("https://fonts.googleapis.com/css?family=Blinker:400,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Wallpoet&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 body {
-  animation: color-me-in 10s infinite;
-}
-
-@keyframes color-me-in {
-  0% {
-    background: rgb(13, 151, 185);
-  }
-  100% {
-    background: rgb(5, 101, 131);
-  }
-}
-
-.main{
-  margin-top: -2rem;
-}
-
-  .event-page {
-    font-size: 6vh;
-    color: black;
-    text-align: center;
-    text-shadow: 2px 2px gray;
-  }
-  .container {
-
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  
-  }
-
-.card-wrapper {
-  width: 400px;
-  height: 500px;
-  position: relative;
-}
-
-.card {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 300px;
-  height: 400px;
-  transform: translate(-50%, -50%);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 5px 10px 18px rgb(148, 34, 148);
-  cursor: pointer;
-  transition: 0.5s;
-}
-.card .card-image {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
+  font-family: Montserrat, sans-serif;
+  color: #0c222b;
+  background-position: center;
+  background-image: linear-gradient(
+    to right,
+    #290657,
+    #08295a,
+    #0e4775,
+    #0e4775,
+    #08295a,
+    #290657
+  );
   height: 100%;
-  z-index: 2;
-  background-color: #000;
-  transition: 0.5s;
-}
-.card:hover img {
-  opacity: 0.4;
-  transition: 0.5s;
 }
 
-.card:hover .card-image {
-  transform: translateY(-100px);
-  transition: all 0.9s;
+
+.heading {
+  text-align: center;
 }
 
-/**** Social Icons *****/
-.social-icons {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3;
-  display: flex;
+.heading h1 {
+  color: white;
+  margin-top: -1%;
+  margin-bottom: 3%;
+  font-size: 50px;
+  font-family: "Montserrat", sans-serif;
+  color: rgb(15, 13, 10) !important;
+  text-shadow: -1px -1px rgb(226, 208, 175), 1.5px 2px hsla(0, 0%, 5%, 0.5);
 }
-.social-icons li {
-  list-style: none;
-}
-.social-icons li a {
+
+.container {
   position: relative;
-  display: block;
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  background: #fff;
-  font-size: 23px;
-  color: #333;
-  font-weight: bold;
-  margin: 0 6px;
-  transition: 0.4s;
-  transform: translateY(200px);
-  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.container .card {
+  position: relative;
+  width: 350px;
+  height: 400px;
+  margin: 10px;
+  margin-right: 40px;
+  margin-left: 30px;
+  overflow: hidden;
+  box-shadow: 10px 15px 15px rgba(100, 98, 98, 0.2);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.card:hover .social-icons li a {
-  transform: translateY(0px);
-  opacity: 1;
-}
-
-.social-icons li a:hover {
-  background: #000;
-  transition: 0.2s;
-}
-.social-icons li a:hover .fab {
-  color: #fff;
-}
-
-.social-icons li a .fab {
-  transition: 0.8s;
-}
-.social-icons li a .fab:hover {
-  transform: rotateY(360deg);
-  color: #fff;
-}
-
-.card:hover li:nth-child(1) a {
-  transition-delay: 0.1s;
-}
-
-.card:hover li:nth-child(2) a {
-  transition-delay: 0.2s;
-}
-
-.card:hover li:nth-child(3) a {
-  transition-delay: 0.3s;
-}
-
-.card:hover li:nth-child(4) a {
-  transition-delay: 0.4s;
-}
-
-/**** Personal Details ****/
-.details {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background: #fff;
-  width: 100%;
-  height: 120px;
-  z-index: 1;
-  padding: 10px;
-}
-.details h2 {
-  margin: 30px 0;
+.container .card img {
   padding: 0;
-  text-align: center;
-}
-.details h2 .job-title {
-  font-size: 1rem;
-  line-height: 2.5rem;
-  color: #333;
-  font-weight: 300;
+  width: 25rem;
+  height: 25rem;
 }
 
-/* Media Query for Mobile Devices */
-@media (max-width: 480px) {
-  .card {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 90vw;
-    height: 400px;
-    transform: translate(-50%, -50%);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 5px 10px 18px rgb(148, 34, 148);
-    cursor: pointer;
-    transition: 0.5s;
+
+
+.container .card .content {
+  position: absolute;
+  bottom: -160px;
+  width: 100%;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  flex-direction: column;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  transition: bottom 0.5s;
+  transition-delay: 0.65s;
+}
+.container .card:hover .content {
+  bottom: 0;
+  transition-delay: 0s;
+}
+
+.container .card .content .contentBx h3 {
+  text-transform: uppercase;
+  color: rgb(1, 2, 2);
+  letter-spacing: 2px;
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+  align-items: center;
+  margin: 20px 0 15px;
+  line-height: 1.1em;
+  transition: 0.5s;
+  transition-delay: 0.6s;
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.container .card:hover .content .contentBx h3 {
+  opacity: 1;
+  transform: translateY(0);
+}
+.container .card .content .contentBx h3 span {
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: initial;
+}
+.container .card .content .sci {
+  position: relative;
+  bottom: 10px;
+  display: flex;
+  margin-left: -5.5vh;
+  padding-right: 0.1rem;
+}
+.container .card .content .sci li {
+  list-style: none;
+  /* margin: 0 7px; */
+  margin-left: 1px;
+  transform: translateY(40px);
+  transition: 0.5s;
+  opacity: 0;
+  transition-delay: calc(0.2s * var(--i));
+}
+
+.container .card:hover .content .sci li {
+  transform: translateY(0);
+  opacity: 0.8;
+  padding-left: 0.2rem;
+  padding-right: 0.5rem;
+  margin-left: 0.05rem;
+}
+.container .card .content .sci li a i {
+  color: rgb(241, 233, 233);
+  font-size: 24px;
+  margin-left: 0.01rem;
+}
+
+.fas {
+  position: relative;
+  top: 0;
+  margin-left: 0.2rem !important;
+  transition: all 200ms ease-in-out;
+}
+
+.fas:hover {
+  color: rgb(10, 10, 10) !important;
+}
+
+.fab {
+  position: relative;
+  top: 0;
+  margin-left: 0.2rem !important;
+  transition: all 200ms ease-in-out;
+}
+
+.fab:hover {
+  color: rgb(3, 3, 3) !important;
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    background-size: 300% 300%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .heading {
+    margin-top: 2rem;
+  }
+
+  .heading h1 {
+    font-size: 30px;
   }
 }

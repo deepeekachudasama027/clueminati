@@ -45,7 +45,7 @@ exports.getdata = async (request, response, next) => {
   try {
     if (request.session.loggedIn) {
       const selecttotal_hit = await selecttotalhit(request.session.rollno);
-      if (selecttotal_hit.rows[0].total_hit >= 25) {
+      if (selecttotal_hit.rows[0].total_hit >= 40) {
         request.session.loggedIn = false;
         response.render("challenges/thanksday");
       } else {
@@ -83,7 +83,7 @@ exports.submit = async (request, response, next) => {
             const selecttotal_hit = await selecttotalhit(
               request.session.rollno
             );
-            if (selecttotal_hit.rows[0].total_hit >= 25) {
+            if (selecttotal_hit.rows[0].total_hit >= 40) {
               request.session.loggedIn = false;
               response.render("challenges/thanksday");
             } else {
@@ -104,7 +104,7 @@ exports.submit = async (request, response, next) => {
             const selecttotal_hit = await selecttotalhit(
               request.session.rollno
             );
-            if (selecttotal_hit.rows[0].total_hit >= 25) {
+            if (selecttotal_hit.rows[0].total_hit >= 40) {
               request.session.loggedIn = false;
               response.render("challenges/thanksday");
             } else {
@@ -125,7 +125,7 @@ exports.submit = async (request, response, next) => {
             const selecttotal_hit = await selecttotalhit(
               request.session.rollno
             );
-            if (selecttotal_hit.rows[0].total_hit >= 25) {
+            if (selecttotal_hit.rows[0].total_hit >= 40) {
               request.session.loggedIn = false;
               response.render("challenges/thanksday");
             } else {
@@ -151,7 +151,7 @@ exports.submit = async (request, response, next) => {
             const selecttotal_hit = await selecttotalhit(
               request.session.rollno
             );
-            if (selecttotal_hit.rows[0].total_hit >= 25) {
+            if (selecttotal_hit.rows[0].total_hit >= 40) {
               request.session.loggedIn = false;
               response.render("challenges/thanksday");
             } else {
@@ -172,7 +172,7 @@ exports.submit = async (request, response, next) => {
             const selecttotal_hit = await selecttotalhit(
               request.session.rollno
             );
-            if (selecttotal_hit.rows[0].total_hit >= 25) {
+            if (selecttotal_hit.rows[0].total_hit >= 40) {
               request.session.loggedIn = false;
               response.render("challenges/thanksday");
             } else {
@@ -193,7 +193,7 @@ exports.submit = async (request, response, next) => {
             const selecttotal_hit = await selecttotalhit(
               request.session.rollno
             );
-            if (selecttotal_hit.rows[0].total_hit >= 25) {
+            if (selecttotal_hit.rows[0].total_hit >= 40) {
               request.session.loggedIn = false;
               response.render("challenges/thanksday");
             } else {
@@ -219,7 +219,7 @@ exports.submit = async (request, response, next) => {
             const selecttotal_hit = await selecttotalhit(
               request.session.rollno
             );
-            if (selecttotal_hit.rows[0].total_hit >= 25) {
+            if (selecttotal_hit.rows[0].total_hit >= 40) {
               request.session.loggedIn = false;
               response.render("challenges/thanksday");
             } else {
@@ -240,7 +240,7 @@ exports.submit = async (request, response, next) => {
             const selecttotal_hit = await selecttotalhit(
               request.session.rollno
             );
-            if (selecttotal_hit.rows[0].total_hit >= 25) {
+            if (selecttotal_hit.rows[0].total_hit >= 40) {
               request.session.loggedIn = false;
               response.render("challenges/thanksday");
             } else {
@@ -261,7 +261,7 @@ exports.submit = async (request, response, next) => {
             const selecttotal_hit = await selecttotalhit(
               request.session.rollno
             );
-            if (selecttotal_hit.rows[0].total_hit >= 25) {
+            if (selecttotal_hit.rows[0].total_hit >= 40) {
               request.session.loggedIn = false;
               response.render("challenges/thanksday");
             } else {

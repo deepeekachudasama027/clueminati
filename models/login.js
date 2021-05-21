@@ -394,7 +394,7 @@ exports.selectflag = (rollno,callback) => {
 
 exports.checkanswer = (rollno, callback) => {
   return pool.query(
-    "select question_clueminati.answer FROM question_clueminati INNER JOIN login_clueminati ON question_clueminati.id=login_clueminati.cur_id and login_clueminati.rollno=$1",
+    "select question_clueminati.answer,id FROM question_clueminati INNER JOIN login_clueminati ON question_clueminati.id=login_clueminati.cur_id and login_clueminati.rollno=$1",
     [rollno],
     callback
   );

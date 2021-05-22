@@ -45,9 +45,9 @@ exports.getdata = async (request, response, next) => {
   try {
     if (request.session.loggedIn) {
       const selecttotal_hit = await selecttotalhit(request.session.rollno);
-      if (selecttotal_hit.rows[0].total_hit >= 40) {
+      if (selecttotal_hit.rows[0].total_hit >= 50) {
         request.session.loggedIn = false;
-        response.render("challenges/thanksday");
+        response.render("challenges/thanks");
       } else {
         const getmain = await mainpage(request.session.rollno);
         response.render("layout/main", {
@@ -83,9 +83,9 @@ exports.submit = async (request, response, next) => {
             const selecttotal_hit = await selecttotalhit(
               request.session.rollno
             );
-            if (selecttotal_hit.rows[0].total_hit >= 40) {
+            if (selecttotal_hit.rows[0].total_hit >= 50) {
               request.session.loggedIn = false;
-              response.render("challenges/thanksday");
+              response.render("challenges/thanks");
             } else {
               const getmain = await mainpage(request.session.rollno);
               response.render("layout/main", {
@@ -104,9 +104,9 @@ exports.submit = async (request, response, next) => {
             const selecttotal_hit = await selecttotalhit(
               request.session.rollno
             );
-            if (selecttotal_hit.rows[0].total_hit >= 40) {
+            if (selecttotal_hit.rows[0].total_hit >= 50) {
               request.session.loggedIn = false;
-              response.render("challenges/thanksday");
+              response.render("challenges/thanks");
             } else {
               const getmain = await mainpage(request.session.rollno);
               response.render("layout/main", {
@@ -125,9 +125,9 @@ exports.submit = async (request, response, next) => {
             const selecttotal_hit = await selecttotalhit(
               request.session.rollno
             );
-            if (selecttotal_hit.rows[0].total_hit >= 40) {
+            if (selecttotal_hit.rows[0].total_hit >= 50) {
               request.session.loggedIn = false;
-              response.render("challenges/thanksday");
+              response.render("challenges/thanks");
             } else {
               const getmain = await mainpage(request.session.rollno);
               response.render("layout/main", {
@@ -151,9 +151,9 @@ exports.submit = async (request, response, next) => {
             const selecttotal_hit = await selecttotalhit(
               request.session.rollno
             );
-            if (selecttotal_hit.rows[0].total_hit >= 40) {
+            if (selecttotal_hit.rows[0].total_hit >= 50) {
               request.session.loggedIn = false;
-              response.render("challenges/thanksday");
+              response.render("challenges/thanks");
             } else {
               const getmain = await mainpage(request.session.rollno);
               response.render("layout/main", {
@@ -172,9 +172,9 @@ exports.submit = async (request, response, next) => {
             const selecttotal_hit = await selecttotalhit(
               request.session.rollno
             );
-            if (selecttotal_hit.rows[0].total_hit >= 40) {
+            if (selecttotal_hit.rows[0].total_hit >= 50) {
               request.session.loggedIn = false;
-              response.render("challenges/thanksday");
+              response.render("challenges/thanks");
             } else {
               const getmain = await mainpage(request.session.rollno);
               response.render("layout/main", {
@@ -193,9 +193,9 @@ exports.submit = async (request, response, next) => {
             const selecttotal_hit = await selecttotalhit(
               request.session.rollno
             );
-            if (selecttotal_hit.rows[0].total_hit >= 40) {
+            if (selecttotal_hit.rows[0].total_hit >= 50) {
               request.session.loggedIn = false;
-              response.render("challenges/thanksday");
+              response.render("challenges/thanks");
             } else {
               const getmain = await mainpage(request.session.rollno);
               response.render("layout/main", {
@@ -206,7 +206,7 @@ exports.submit = async (request, response, next) => {
               });
             }
           }
-        } else if (check.rows[0].id >= 40 && check.rows[0].id < 50) {
+        } else if (check.rows[0].id >= 40 && check.rows[0].id <= 50) {
           const selectl = await selectflag(request.session.rollno);
 
           if (selectl.rows[0].flag < 125 && selectl.rows[0].flag >= 1) {
@@ -219,9 +219,9 @@ exports.submit = async (request, response, next) => {
             const selecttotal_hit = await selecttotalhit(
               request.session.rollno
             );
-            if (selecttotal_hit.rows[0].total_hit >= 40) {
+            if (selecttotal_hit.rows[0].total_hit >= 50) {
               request.session.loggedIn = false;
-              response.render("challenges/thanksday");
+              response.render("challenges/thanks");
             } else {
               const getmain = await mainpage(request.session.rollno);
               response.render("layout/main", {
@@ -240,9 +240,9 @@ exports.submit = async (request, response, next) => {
             const selecttotal_hit = await selecttotalhit(
               request.session.rollno
             );
-            if (selecttotal_hit.rows[0].total_hit >= 40) {
+            if (selecttotal_hit.rows[0].total_hit >= 50) {
               request.session.loggedIn = false;
-              response.render("challenges/thanksday");
+              response.render("challenges/thanks");
             } else {
               const getmain = await mainpage(request.session.rollno);
               response.render("layout/main", {
@@ -261,9 +261,9 @@ exports.submit = async (request, response, next) => {
             const selecttotal_hit = await selecttotalhit(
               request.session.rollno
             );
-            if (selecttotal_hit.rows[0].total_hit >= 40) {
+            if (selecttotal_hit.rows[0].total_hit >= 50) {
               request.session.loggedIn = false;
-              response.render("challenges/thanksday");
+              response.render("challenges/thanks");
             } else {
               const getmain = await mainpage(request.session.rollno);
               response.render("layout/main", {
